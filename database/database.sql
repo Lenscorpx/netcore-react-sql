@@ -15,14 +15,17 @@ as
 select * from t_work order by id desc
 go
 
+create procedure addwork
+@description_work nvarchar(50)
+as
 insert into t_work
     (description_work)
 values
-    ('Work 1'),
-    ('Work 2'),
-    ('Work 3'),
-    ('Work 4'),
-    ('Work 5'),
-    ('Work 6'),
-    ('Work 7')
+(@description_work)
+go
+
+create procedure deletework
+@id int
+as
+    delete from t_work where id like @id
 go
